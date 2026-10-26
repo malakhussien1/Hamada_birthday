@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f6f0e6">
+<title>For Hamada, With Love</title>
+<style>
+:root{--cream:#f6f0e6;--paper:#fffaf2;--brown:#4c3428;--muted:#8a7565;--gold:#b9975b;--line:#dfd0b8;--rose:#b77e72}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--brown);font-family:Georgia,'Times New Roman',serif}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:760px;margin:auto;padding:22px 18px 60px;overflow:hidden}
+.topline{display:flex;justify-content:space-between;align-items:center;font:10px Arial,sans-serif;letter-spacing:2.4px;text-transform:uppercase;color:var(--muted);padding:9px 2px 20px}
+.topline span:last-child{color:var(--gold)}
+.hero{position:relative;text-align:center;padding:56px 18px 44px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.eyebrow{font:10px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+h1{font-weight:400;font-size:clamp(48px,13vw,88px);line-height:.95;letter-spacing:-3px;margin:22px 0 15px}
+h1 em{font-weight:400;color:var(--gold)}
+.subtitle{font-size:16px;line-height:1.8;color:var(--muted);max-width:430px;margin:0 auto}
+.ornament{margin:26px auto 0;color:var(--gold);font-size:22px;letter-spacing:12px}
+.section{padding:48px 2px 12px}
+.section-head{text-align:center;margin-bottom:26px}
+.kicker{font:10px Arial,sans-serif;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold)}
+h2{font-weight:400;font-size:clamp(29px,7vw,42px);line-height:1.15;margin:10px 0}
+.intro{font-size:14px;line-height:1.8;color:var(--muted);max-width:460px;margin:0 auto}
+.gift-wrap{display:flex;justify-content:center;padding:12px 0 28px}
+.gift-button{border:0;background:transparent;padding:0;display:flex;flex-direction:column;align-items:center;gap:15px;color:var(--brown)}
+.gift{width:150px;height:135px;position:relative;transition:transform .45s}
+.gift-box{position:absolute;left:15px;right:15px;bottom:0;height:88px;background:#8b6348;border:1px solid #68452f;border-radius:2px;box-shadow:0 12px 20px #4c34281a}
+.gift-box:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:21px;transform:translateX(-50%);background:#d8bb7c}
+.gift-lid{position:absolute;z-index:2;left:8px;right:8px;top:29px;height:24px;background:#a77b58;border:1px solid #68452f;transition:transform .55s;transform-origin:15% 90%}
+.gift-lid:after{content:"";position:absolute;left:50%;top:-22px;width:29px;height:24px;border:5px solid #d8bb7c;border-radius:50% 50% 0 50%;transform:translateX(-85%) rotate(-15deg)}
+.gift-lid:before{content:"";position:absolute;left:50%;top:-22px;width:29px;height:24px;border:5px solid #d8bb7c;border-radius:50% 50% 50% 0;transform:translateX(-5%) rotate(15deg)}
+.gift-button:hover .gift{transform:translateY(-4px)}
+.gift-button.open .gift-lid{transform:translate(-18px,-40px) rotate(-24deg)}
+.gift-button.open .gift{transform:translateY(-3px)}
+.tap{font:10px Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.reveal{display:none;text-align:center;max-width:500px;margin:0 auto 10px;padding:22px;background:var(--paper);border:1px solid var(--line);animation:fade .7s ease}
+.reveal.show{display:block}
+.reveal p{font-size:18px;line-height:1.8;margin:0}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.memories{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.memory{min-height:185px;background:#e9dfcf;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:15px;position:relative;overflow:hidden}
+.memory:nth-child(2){background:#e3d3c2;margin-top:20px}
+.memory:nth-child(3){background:#e9dfcf;margin-top:-10px}
+.memory:nth-child(4){background:#d8c5ae;margin-top:10px}
+.memory .frame-icon{font-size:30px;color:#9c7950;margin-bottom:12px}
+.memory strong{font-size:16px;font-weight:400}
+.memory small{font:10px Arial,sans-serif;letter-spacing:1px;color:#786451;margin-top:7px;text-transform:uppercase}
+.photo-note{text-align:center;font:11px/1.8 Arial,sans-serif;color:var(--muted);margin:14px auto 0;max-width:430px}
+.letter{background:var(--paper);border:1px solid var(--line);padding:28px 22px;position:relative}
+.letter:before{content:"";position:absolute;inset:7px;border:1px solid #e9dfcf;pointer-events:none}
+.letter p{font-size:16px;line-height:2;margin:0 0 16px;position:relative}
+.letter .sign{font-style:italic;color:var(--gold);font-size:24px;margin:20px 0 0}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:440px;margin:24px auto}
+.time{background:var(--paper);border:1px solid var(--line);padding:16px 5px;text-align:center}
+.time b{display:block;font-weight:400;font-size:clamp(24px,7vw,34px)}
+.time span{display:block;font:9px Arial,sans-serif;letter-spacing:1.4px;color:var(--muted);margin-top:6px;text-transform:uppercase}
+.date-hint{text-align:center;font:11px/1.7 Arial,sans-serif;color:var(--muted)}
+.music-btn{display:block;margin:22px auto 0;padding:12px 18px;border:1px solid var(--gold);background:transparent;color:var(--brown);font:10px Arial,sans-serif;letter-spacing:1.5px;text-transform:uppercase}
+.footer{text-align:center;padding:48px 0 10px;border-top:1px solid var(--line);margin-top:45px}
+.footer .heart{font-size:22px;color:var(--rose)}
+.footer p{font-size:12px;line-height:1.8;color:var(--muted)}
+.tiny{font:9px Arial,sans-serif;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+@media(min-width:600px){.hero{padding:72px 30px 56px}.section{padding-top:64px}.memories{gap:18px}.memory{min-height:220px}.letter{padding:40px 45px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="topline"><span>A little something for you</span><span>Est. us ♡</span></div>
+  <header class="hero">
+    <div class="eyebrow">To my favorite person</div>
+    <h1>Happy Birthday,<br><em>Hamada.</em></h1>
+    <p class="subtitle">A little corner of the internet, made just for you — and for all the little things that make you my favorite.</p>
+    <div class="ornament">✳ ✧ ✳</div>
+  </header>
+
+  <section class="section" id="gift">
+    <div class="section-head"><div class="kicker">First, a little surprise</div><h2>Open your gift</h2><p class="intro">I wish I could put every reason I love you inside this box. For now, here's a little piece of my heart.</p></div>
+    <div class="gift-wrap">
+      <button class="gift-button" id="giftButton" aria-expanded="false" aria-controls="giftReveal">
+        <span class="gift" aria-hidden="true"><span class="gift-box"></span><span class="gift-lid"></span></span>
+        <span class="tap" id="giftTap">Tap to open your gift</span>
+      </button>
+    </div>
+    <div class="reveal" id="giftReveal"><p>Surprise, my Hamada. ♡<br><br>If I could choose a thousand times, in a thousand different lifetimes, I would still look for you. You're one of my favorite parts of this life.</p></div>
+  </section>
+
+  <section class="section" id="memories">
+    <div class="section-head"><div class="kicker">Little moments, big feelings</div><h2>Our memories</h2><p class="intro">The moments that might look ordinary to everyone else, but mean the world to me.</p></div>
+    <div class="memories">
+      <div class="memory"><span class="frame-icon">♡</span><strong>Our favorite photo</strong><small>Add a picture of us</small></div>
+      <div class="memory"><span class="frame-icon">✧</span><strong>A day I'll keep</strong><small>Add a special memory</small></div>
+      <div class="memory"><span class="frame-icon">∞</span><strong>Just being us</strong><small>Add a candid moment</small></div>
+      <div class="memory"><span class="frame-icon">☼</span><strong>More to come</strong><small>Our next adventure</small></div>
+    </div>
+    <p class="photo-note">Our photos aren't added yet — this is where your favorite pictures will go when we personalize the site.</p>
+  </section>
+
+  <section class="section" id="letter">
+    <div class="section-head"><div class="kicker">A letter, just for you</div><h2>In case I don't say it enough</h2></div>
+    <div class="letter">
+      <p>My Hamada,</p>
+      <p>Happy birthday to the person who has a place in my heart that nobody else could ever take. I hope this new year of your life brings you peace, success, happiness, and all the beautiful things you've been working so hard for.</p>
+      <p>I hope you always see how special you are — not just today, and not just when everything is going right, but on the difficult days too. I hope life is gentle with you, that your dreams come closer every day, and that you never forget how much you deserve good things.</p>
+      <p>Thank you for being part of my days, my memories, and the little details that make life feel warmer. I love the moments we share, the laughs that come out of nowhere, and even the simple ordinary days — because they're ours.</p>
+      <p>If I could wish one thing for us, it would be to keep choosing each other, keep growing together, and keep making memories we'll smile about years from now. I want to celebrate your wins, stand beside you through the hard parts, and remind you how loved you are whenever you need it.</p>
+      <p>Today is all about you, my love. I hope this little surprise makes you smile, even half as much as you make me smile.</p>
+      <p>Happy birthday, my favorite person. Here's to you, to us, and to all the beautiful chapters still waiting for us. ♡</p>
+      <p class="sign">Always yours, ♡</p>
+    </div>
+  </section>
+
+  <section class="section" id="countdown">
+    <div class="section-head"><div class="kicker">A day worth celebrating</div><h2>Counting down to your day</h2><p class="intro">Every day is a little more special because you exist.</p></div>
+    <div class="countdown" aria-live="polite">
+      <div class="time"><b id="days">—</b><span>Days</span></div>
+      <div class="time"><b id="hours">—</b><span>Hours</span></div>
+      <div class="time"><b id="minutes">—</b><span>Minutes</span></div>
+      <div class="time"><b id="seconds">—</b><span>Seconds</span></div>
+    </div>
+    <p class="date-hint" id="dateHint">Birthday date will be personalized before publishing.</p>
+    <button class="music-btn" id="musicButton">♫ Play a little melody</button>
+    <p class="date-hint">A soft original melody — no song download needed.</p>
+  </section>
+
+  <footer class="footer">
+    <div class="heart">♡</div>
+    <p>Made with love, just for you.<br>Some people feel like home. You're one of them.</p>
+    <div class="tiny">You will always be my favorite hello</div>
+  </footer>
+</main>
+<script>
+/* PERSONALIZE BEFORE PUBLISHING:
+   Replace the placeholder memory cards with your photos, and set BIRTHDAY below.
+   Format: "YYYY-MM-DD" (example: "2026-11-15").
+*/
+const BIRTHDAY = ""; // Add Hamada's birthday here: YYYY-MM-DD
+const giftButton=document.getElementById('giftButton');
+giftButton.addEventListener('click',()=>{
+  const opened=giftButton.classList.toggle('open');
+  giftButton.setAttribute('aria-expanded',String(opened));
+  document.getElementById('giftReveal').classList.toggle('show',opened);
+  document.getElementById('giftTap').textContent=opened?'Your little surprise is open':'Tap to open your gift';
+});
+function getTarget(){
+  if(!BIRTHDAY){return null}
+  const parts=BIRTHDAY.split('-').map(Number);
+  if(parts.length!==3||parts.some(n=>!n))return null;
+  let target=new Date(parts[0],parts[1]-1,parts[2],0,0,0);
+  const now=new Date();
+  if(target.getTime()<now.getTime())target=new Date(now.getFullYear()+1,parts[1]-1,parts[2],0,0,0);
+  return target;
+}
+function tick(){
+  const target=getTarget();
+  const hint=document.getElementById('dateHint');
+  if(!target){hint.textContent='Birthday date will be personalized before publishing.';return}
+  hint.textContent='For your special day: '+target.toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
+  let diff=Math.max(0,target.getTime()-Date.now());
+  const units=[Math.floor(diff/86400000),Math.floor(diff%86400000/3600000),Math.floor(diff%3600000/60000),Math.floor(diff%60000/1000)];
+  ['days','hours','minutes','seconds'].forEach((id,i)=>document.getElementById(id).textContent=String(units[i]).padStart(2,'0'));
+  if(diff===0)hint.textContent='Today is your day, my love. Happy birthday! ♡';
+}
+tick();setInterval(tick,1000);
+let audioCtx=null,oscillators=[],musicOn=false,loopTimer=null;
+function playMelody(){
+  const AudioContext=window.AudioContext||window.webkitAudioContext;
+  if(!AudioContext)return;
+  audioCtx=audioCtx||new AudioContext();
+  if(audioCtx.state==='suspended')audioCtx.resume();
+  const notes=[392,440,523.25,440,349.23,392,440,392,329.63,392,440,523.25];
+  let i=0;
+  function note(){
+    if(!musicOn)return;
+    const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
+    osc.type='sine';osc.frequency.value=notes[i%notes.length];
+    gain.gain.setValueAtTime(0.0001,audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.07,audioCtx.currentTime+0.04);
+    gain.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+0.48);
+    osc.connect(gain);gain.connect(audioCtx.destination);osc.start();osc.stop(audioCtx.currentTime+0.5);
+    i++;loopTimer=setTimeout(note,570);
+  }
+  note();
+}
+document.getElementById('musicButton').addEventListener('click',()=>{
+  musicOn=!musicOn;
+  document.getElementById('musicButton').textContent=musicOn?'Ⅱ Pause the melody':'♫ Play a little melody';
+  if(musicOn)playMelody();else{clearTimeout(loopTimer);if(audioCtx)audioCtx.suspend()}
+});
+</script>
+</body>
+</html>
